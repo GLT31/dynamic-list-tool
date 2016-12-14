@@ -7,30 +7,51 @@
 </head>
 
 <body>
-    <div id="right"> <img src="Screen Shot 2016-12-09 at 12.27.53 AM.png" /> </div>
-    <div id="left">
-        <p id="heading">PMN: Dynamic List Tool Ver. 1.0</p>
-        <p class="bodyText" style="margin-top: -15px;">Use this tool to create dynamic, stylized lists made up of cards like the one to the right.<br /><em>For help or to report bugs, contact <a href="mailto:jwhalen@philly.com?Subject=List%20Tool" target="_top">Jared Whalen</a>.</em>
+        <p id="heading">PMN: Dynamic List Tool Ver. 1.1</p>
+        <p class="bodyText" style="margin-top: -15px;">Use this tool to create dynamically built, stylized lists.<br /><em>For help or to report bugs, contact <a href="mailto:jwhalen@philly.com?Subject=List%20Tool" target="_top">Jared Whalen</a>.</em>
             <hr />
-            <p class="bodyText"><strong>1.</strong> First, set-up the list by either <a href="https://docs.google.com/spreadsheets/d/1jNeXQl9UhsZHJHc2EkmGI6tEyodI4YpBPAsjl1ei9JI/export?format=csv ">downloading the template CSV file here</a> or by copying and pasting the table row below into an Excel sheet. <strong>DO NOT CHANGE THE HEADER. Even changing capitalization will break the code.</strong> </p>
-            <table
-                class="table table-bordered table-hover table-condensed gridtable">
-                <tr>
-                    <td title="Field #1">Title</td>
-                    <td title="Field #2">Subtitle</td>
-                    <td title="Field #3">Author</td>
-                    <td title="Field #4">Genre</td>
-                    <td title="Field #5">Publisher</td>
-                    <td title="Field #6">Text</td>
-                    <td title="Field #7">Image</td>
-                </tr>
-                <tbody></tbody>
-                </table>
-                <p class="bodyText"><strong>2.</strong> Fill in the CSV with all relevant information. Leave irrelevant fields empty. Paste photo links directly into the <span class="cell">Image</span> column. Hyperlinks <strong>MUST</strong> be inserted as inline <span class="code">&lt;a&gt;</span> tags and formatted like <span class="code">&lta target='_blank' href='<em>URL</em>'&gt;&lt/a&gt;</span></p>
-                <p class="bodyText">You can use the tool below to convert URLs to <span class="code">&lt;a&gt;</span> tags.<br>
-                  Text to add hyperlink: <input type="text" value="" id="textLink"><br>
-                  URL: <input type="text" value="" id="url"> <input type="submit" id="urlSubmit" value="Convert"><br><textarea id="urlConvert"></textarea>
+            <div class="step" id="step-1">
+                <p class="bodyText"><strong>1.</strong> Choose the type of list you are making:
+                    <form id="type-form"> <input type="radio" name="type" value="features" id="features-button" class="type-button"> Features (listItems, movies, music, etc.)<br> <input type="radio" name="type" value="news" id="news-button" class="type-button"> News (people,
+                        cases, deaths, etc.) </form>
                 </p>
+            </div>
+            <div class="step" id="step-2-features">
+                <p class="bodyText"><strong>2.</strong> Set-up the list by either <a href="https://docs.google.com/spreadsheets/d/1jNeXQl9UhsZHJHc2EkmGI6tEyodI4YpBPAsjl1ei9JI/export?format=csv ">downloading the template CSV file here</a> or by copying and pasting the table
+                    row below into an Excel sheet. <strong>DO NOT CHANGE THE HEADER. Even changing capitalization will break the code.</strong> </p>
+                <table class="table table-bordered table-hover table-condensed gridtable">
+                    <tr>
+                        <td title="Field #1">Title</td>
+                        <td title="Field #2">Subtitle</td>
+                        <td title="Field #3">Author</td>
+                        <td title="Field #4">Genre</td>
+                        <td title="Field #5">Publisher</td>
+                        <td title="Field #6">Text</td>
+                        <td title="Field #7">Image</td>
+                    </tr>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="step" id="step-2-news">
+                <p class="bodyText"><strong>2.</strong> Set-up the list by either <a href="https://docs.google.com/spreadsheets/d/1x9nuwxrPXf3un3IINqHHDjpI7VbmyeauHQXYYiwYSQg/export?format=csv ">downloading the template CSV file here</a> or by copying and pasting the table
+                    row below into an Excel sheet. <strong>DO NOT CHANGE THE HEADER. Even changing capitalization will break the code.</strong> </p>
+                <table class="table table-bordered table-hover table-condensed gridtable">
+                    <tr>
+                        <td title="Field #1">Name</td>
+                        <td title="Field #2">Field_1</td>
+                        <td title="Field #3">Field_2</td>
+                        <td title="Field #4">Text</td>
+                        <td title="Field #5">Image</td>
+                    </tr>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="step" id="step-3">
+                <p class="bodyText"><strong>3.</strong> Fill in the CSV with all relevant information. Leave irrelevant fields empty. Paste photo links directly into the <span class="cell">Image</span> column. Hyperlinks <strong>MUST</strong> be inserted as inline
+                    <span
+                        class="code">&lt;a&gt;</span> tags and formatted like <span class="code">&lta target='_blank' href='<em>URL</em>'&gt;&lt/a&gt;</span></p>
+                <p class="bodyText">You can use the tool below to convert URLs to <span class="code">&lt;a&gt;</span> tags.<br> Text to add hyperlink: <input type="text" value="" id="textLink"><br> URL: <input type="text" value="" id="url"> <input type="submit" id="urlSubmit"
+                        value="Convert"><br><textarea id="urlConvert"></textarea> </p>
                 <!-- <input type="file" id="fileUpload" />
     <input type="button" id="upload" value="Upload" />
     <hr />
@@ -39,9 +60,11 @@
 
 
 
-    <div id="drop_zone">Drop files here</div> -->
-                <p class="bodyText"><strong>3.</strong> Once finished, select all (CTRL+A) and copy (CTRL+C) the CSV contents and paste data in the field below.</p><textarea id="csv" class="text"></textarea>
-                <p class="bodyText"><strong>4.</strong> Click the button below to convert your CSV into the needed code.</p>
+    <div id="drop_zone">Drop files here</div> --></div>
+            <div class="step" id="step-4">
+                <p class="bodyText"><strong>4.</strong> Once finished, select all (CTRL+A) and copy (CTRL+C) the CSV contents and paste data in the field below.<br><em>NOTE: If extra space is pasted at the bottom of the form, delete it for cleanest conversion.</em></p><textarea id="csv" class="text"></textarea> </div>
+            <div class="step" id="step-5">
+                <p class="bodyText"><strong>5.</strong> Click the button below to convert your CSV into the needed code.</p>
                 <!-- <form>
       <label for="cbox2"><strong>Delimiter:</strong> </label>
       <input type="radio" name="delimiter" value="Comma" id="buttonComma" class="delimiter" checked> Comma
@@ -49,11 +72,11 @@
     </form> --><button id="convert">Convert to list</button>
                 <!-- <textarea id="html" class="text hidden">
       <script alignment="true" src="http://www.philly.com/includes/e32121b31e345f561b84372c2bf06282/jquery-2.0.0b2.js" type="text/javascript"></script>
-    </textarea>  --><textarea id="json" class="text hidden">
+    </textarea>  --><textarea id="json-features" class="text hidden">
 
       var output="<div>";
-      for (var i in data.books) {
-          output+="<div class='cardContainer'><div class='innerContainer'><img src='"+data.books[i].Image+"'/><div class='genre'>"+data.books[i].Genre+"</div><div class='title'>"+data.books[i].Title+"</div><div class='subtitle'>"+data.books[i].Subtitle+"</div><div class='author'>"+data.books[i].Author+"</div><div class='text'>"+data.books[i].Text+"</div><div class='publisher'>"+data.books[i].Publisher+"</div><div class='shareTools'></div></div></div>";
+      for (var i in data.listItems) {
+          output+="<div class='cardContainer'><div class='innerContainer'><img src='"+data.listItems[i].Image+"'/><div class='genre'>"+data.listItems[i].Genre+"</div><div class='title'>"+data.listItems[i].Title+"</div><div class='subtitle'>"+data.listItems[i].Subtitle+"</div><div class='author'>"+data.listItems[i].Author+"</div><div class='text'>"+data.listItems[i].Text+"</div><div class='publisher'>"+data.listItems[i].Publisher+"</div><div class='shareTools'></div></div></div>";
       }
 
       output+="</div>";
@@ -133,38 +156,81 @@
           fontStyle: 'italic',
       })
     </script>
+  </textarea>
+  <textarea id="json-news" class="text hidden">
+
+      var output="<div>";
+      for (var i in data.listItems) {
+          output+="<div class='cardContainer'><div class='innerContainer'><img src='"+data.listItems[i].Image+"'/><div class='name'>"+data.listItems[i].Name+"</div><div class='field_1'>"+data.listItems[i].Field_1+"</div><div class='field_2'>"+data.listItems[i].Field_2+"</div><div class='text'>"+data.listItems[i].Text+"</div></div></div>";
+      }
+
+      output+="</div>";
+      document.getElementById("listContainer").innerHTML=output;
 
 
+      if ($(window).width() <= 500){
+        $('.cardContainer img').css({
+          width: '100%',
+          float: 'none',
+          margin: '0 0 5%',
+        })
+      } else {
+        $('.cardContainer img').css({
+          width: '150px',
+          float: 'left',
+          margin: '0% 5% 0 0',
+        })
+      }
+
+      $('.cardContainer').css({
+          maxWidth: '100%',
+          width: '100%',
+          marginTop: '0',
+          marginRight: 'auto',
+          marginBottom: '0',
+          marginLeft: 'auto',
+          borderBottomWidth: '0.5px',
+          borderBottomStyle: 'dotted',
+          borderBttomColor: 'black',
+          fontFamily: '"Sentinel SSm A", "Sentinel SSm B", Times, "Times New Roman", serif',
+          marginBottom: '1.25rem',
+          fontSize: '1.1rem',
+          lineHeight: '1.5'
+      })
+
+      $('.field_1, .field_2').css({
+          fontSize: '14px',
+          fontFamily: '"Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif',
+          color: '#777',
+      })
+
+
+
+      $('.innerContainer').css({
+          padding: '5% 5% 10%',
+      })
+      $('.name').css({
+          fontFamily: '"Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif',
+      })
+
+      $('.name').css({
+          fontSize: '20px',
+          fontWeight: '700',
+      })
+
+    </script>
 </textarea>
-                <p class="bodyText hidden"><strong>5.</strong> Copy the code in the form above and paste it into the HTML Source Editor of an Article or Blog item on Clickability.</p>
     </div>
+            <div class="step" id="step-6">
+                <p class="bodyText hidden"><strong>6.</strong> Copy the code in the form above and paste it into the HTML Source Editor of an Article or Blog item on Clickability.</p>
+            </div>
+
     <style>
-        #left {
-            float: left;
-            width: 60%;
+        .step:not(#step-1) {
+            display: none;
         }
 
-        #right {
-            float: right;
-            width: 40%;
-            position: relative;
-            height: 600px;
-        }
 
-        #right img {
-            width: 80%;
-            text-align: center;
-            display: block;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            -webkit-box-shadow: -2px 2px 10px 2px #ccc;
-            -moz-box-shadow: -2px 2px 10px 2px #ccc;
-            box-shadow: -2px 2px 10px 2px #ccc;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
 
         .hidden {
             display: none;
@@ -192,14 +258,16 @@
             font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
         }
 
-        .bodyText {
+        .bodyText,
+        #type-form {
             font-size: 16px;
             line-height: 1.3;
             font-weight: inherit;
             font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
         }
 
-        .text, #urlConvert{
+        .text,
+        #urlConvert {
             width: 99%;
             background-color: #EFF0F1;
             font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
@@ -210,11 +278,15 @@
             padding: 5px;
         }
 
-        #urlConvert, #url, #textLink {
-          margin-top: 10px;
+        #urlConvert,
+        #url,
+        #textLink {
+            margin-top: 10px;
         }
 
-        #urlConvert {display: none;}
+        #urlConvert {
+            display: none;
+        }
 
         .small {
             font-size: small;
@@ -231,9 +303,13 @@
             color: #bbb;
         }
 
-        #csv,
-        #json {
+        #csv {
             height: 150px;
+        }
+
+        #json-features,
+        #json-news {
+            height: 250px;
         }
 
         #html {
@@ -281,38 +357,47 @@
             font-size: 13px;
             border-radius: 4px;
         }
-
-
     </style>
     <script>
-        $(function() {
-            $("#upload").bind("click", function() {
-                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
-                if (regex.test($("#fileUpload").val().toLowerCase())) {
-                    if (typeof(FileReader) != "undefined") {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $("#csv").html('');
-                            $("#csv").val(e.target.result);
-                        }
-                        reader.readAsText($("#fileUpload")[0].files[0]);
-                    } else {
-                        alert("This browser does not support HTML5.");
-                    }
-                } else {
-                    alert("Please upload a valid CSV file.");
-                }
-            });
+        $(".type-button").click(function() {
+            elemID = this.id;
+            elemType = elemID.replace('-button', '');
+            $("#type-form").html("<div class='code'><strong>&#10003; " + elemType + " list</strong></div>")
+            if (elemType === "features") {
+                $("#step-2-features").show();
+            } else {
+                $("#step-2-news").show();
+            }
+            $("#step-3").show();
+            $("#step-4").show();
+            $("#step-5").show();
         });
-
-
+        // $(function() {
+        //     $("#upload").bind("click", function() {
+        //         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        //         if (regex.test($("#fileUpload").val().toLowerCase())) {
+        //             if (typeof(FileReader) != "undefined") {
+        //                 var reader = new FileReader();
+        //                 reader.onload = function(e) {
+        //                     $("#csv").html('');
+        //                     $("#csv").val(e.target.result);
+        //                 }
+        //                 reader.readAsText($("#fileUpload")[0].files[0]);
+        //             } else {
+        //                 alert("This browser does not support HTML5.");
+        //             }
+        //         } else {
+        //             alert("Please upload a valid CSV file.");
+        //         }
+        //     });
+        // });
         $("#urlSubmit").click(function() {
-          $("#urlConvert").html("");
-          $("#urlConvert").show();
-          var textLink = $("#textLink").val(),
-              url = $("#url").val();
-          $("#urlConvert").prepend("&lt;a target='_blank' href='"+url+"'&gt;"+textLink+"&lt;/a&gt;");
-          $("#url,#textLink").val("");
+            $("#urlConvert").html("");
+            $("#urlConvert").show();
+            var textLink = $("#textLink").val(),
+                url = $("#url").val();
+            $("#urlConvert").prepend("&lt;a target='_blank' href='" + url + "'&gt;" + textLink + "&lt;/a&gt;");
+            $("#url,#textLink").val("");
         });
 
         function CSVToArray(strData, strDelimiter) {
@@ -388,26 +473,37 @@
             return str;
         }
         $("#convert").click(function() {
-
-          var functionOne = function() {
-            var r = $.Deferred();
-            var textarea=$('#csv');
-            textarea.val(textarea.val().replace(/</g,"&lt;"));
-            textarea.val(textarea.val().replace(/>/g,"&gt;"));
-            //$("#csv").val().replace("<","&lt;");
-            //$("#csv").val().replace(">","&gt;");
-            console.log('Function One');
-            return r;
-          };
-          var functionTwo = function() {
-            var csv = $("#csv").val();
-            var json = CSV2JSON(csv);
-            $("#json").prepend("&lt;div id='listContainer' alignment='true'&gt;&lt;/div&gt;&lt;script alignment='true'&gt;var data ={'books': " + json + "};");
-            $(".hidden").show();
-            console.log('Function Two');
-          };
-          // Now call the functions one after the other using the done method
-          functionOne().done( functionTwo() );
+            $("#step-5").show();
+            var functionOne = function() {
+                var r = $.Deferred();
+                var textarea = $('#csv');
+                textarea.val(textarea.val().replace(/</g, "&lt;"));
+                textarea.val(textarea.val().replace(/>/g, "&gt;"));
+                //$("#csv").val().replace("<","&lt;");
+                //$("#csv").val().replace(">","&gt;");
+                console.log('Function One');
+                return r;
+            };
+            var functionFeatures = function() {
+                var csv = $("#csv").val();
+                var json = CSV2JSON(csv);
+                $("#json-features").prepend("&lt;div id='listContainer' alignment='true'&gt;&lt;/div&gt;&lt;script alignment='true'&gt;var data ={'listItems': " + json + "};");
+                $("#json-features").show();
+                console.log('Function f');
+            };
+            var functionNews = function() {
+                var csv = $("#csv").val();
+                var json = CSV2JSON(csv);
+                $("#json-news").prepend("&lt;div id='listContainer' alignment='true'&gt;&lt;/div&gt;&lt;script alignment='true'&gt;var data ={'listItems': " + json + "};");
+                $("#json-news").show();
+                console.log('Function n');
+            };
+            if ($('#step-2-features').is(':visible')) {
+                // Now call the functions one after the other using the done method
+                functionOne().done(functionFeatures());
+            } else {
+                functionOne().done(functionNews());
+            }
         });
         // $("#download").click(function() {
         //   var csv = $("#csv").val();
