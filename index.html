@@ -12,7 +12,7 @@
             <hr />
             <div class="step" id="step-1">
                 <p class="bodyText"><strong>1.</strong> Choose the type of list you are making:
-                    <form id="type-form"> <input type="radio" name="type" value="features" id="features-button" class="type-button"> Features (listItems, movies, music, etc.)<br> <input type="radio" name="type" value="news" id="news-button" class="type-button"> News (people,
+                    <form id="type-form"> <input type="radio" name="type" value="features" id="features-button" class="type-button"> Features (books, movies, music, etc.)<br> <input type="radio" name="type" value="news" id="news-button" class="type-button"> News (people,
                         cases, deaths, etc.) </form>
                 </p>
             </div>
@@ -50,7 +50,7 @@
                 <p class="bodyText"><strong>3.</strong> Fill in the CSV with all relevant information. Leave irrelevant fields empty. Paste photo links directly into the <span class="cell">Image</span> column. Hyperlinks <strong>MUST</strong> be inserted as inline
                     <span
                         class="code">&lt;a&gt;</span> tags and formatted like <span class="code">&lta target='_blank' href='<em>URL</em>'&gt;&lt/a&gt;</span></p>
-                <p class="bodyText">You can use the tool below to convert URLs to <span class="code">&lt;a&gt;</span> tags.<br> Text to add hyperlink: <input type="text" value="" id="textLink"><br> URL: <input type="text" value="" id="url"> <input type="submit" id="urlSubmit"
+                <p class="bodyText">You can use the tool below to convert URLs to <span class="code">&lt;a&gt;</span> tags.<br> <strong>&#9672; Hyperlinked text: <input type="text" value="" id="textLink"> URL:</strong> <input type="text" value="" id="url"> <input type="submit" id="urlSubmit"
                         value="Convert"><br><textarea id="urlConvert"></textarea> </p>
                 <!-- <input type="file" id="fileUpload" />
     <input type="button" id="upload" value="Upload" />
@@ -222,8 +222,11 @@
 </textarea>
     </div>
             <div class="step" id="step-6">
-                <p class="bodyText hidden"><strong>6.</strong> Copy the code in the form above and paste it into the HTML Source Editor of an Article or Blog item on Clickability.</p>
+                <p class="bodyText"><strong>6.</strong> Copy the code in the form above and paste it into the HTML Source Editor of an Article or Blog item on Clickability.</p>
+                <button id="redo">Make another list!</button>
             </div>
+
+
 
     <style>
         .step:not(#step-1) {
@@ -236,7 +239,7 @@
             display: none;
         }
 
-        #convert {
+        #convert, #redo {
             width: 100%;
             height: 30px;
             border: none;
@@ -248,7 +251,7 @@
             margin: 0px 0 13px;
         }
 
-        #convert:hover {
+        #convert:hover, #redo:hover {
             opacity: 1;
         }
 
@@ -286,6 +289,7 @@
 
         #urlConvert {
             display: none;
+            height: 15px;
         }
 
         .small {
@@ -304,12 +308,12 @@
         }
 
         #csv {
-            height: 150px;
+            height: 100px;
         }
 
         #json-features,
         #json-news {
-            height: 250px;
+            height: 150px;
         }
 
         #html {
@@ -474,6 +478,7 @@
         }
         $("#convert").click(function() {
             $("#step-5").show();
+            $("#step-6").show();
             var functionOne = function() {
                 var r = $.Deferred();
                 var textarea = $('#csv');
@@ -489,14 +494,12 @@
                 var json = CSV2JSON(csv);
                 $("#json-features").prepend("&lt;div id='listContainer' alignment='true'&gt;&lt;/div&gt;&lt;script alignment='true'&gt;var data ={'listItems': " + json + "};");
                 $("#json-features").show();
-                console.log('Function f');
             };
             var functionNews = function() {
                 var csv = $("#csv").val();
                 var json = CSV2JSON(csv);
                 $("#json-news").prepend("&lt;div id='listContainer' alignment='true'&gt;&lt;/div&gt;&lt;script alignment='true'&gt;var data ={'listItems': " + json + "};");
                 $("#json-news").show();
-                console.log('Function n');
             };
             if ($('#step-2-features').is(':visible')) {
                 // Now call the functions one after the other using the done method
@@ -504,12 +507,11 @@
             } else {
                 functionOne().done(functionNews());
             }
+            $('#redo').click(function() {
+                location.reload();
+            });
         });
-        // $("#download").click(function() {
-        //   var csv = $("#csv").val();
-        //   var json = CSV2JSON(csv);
-        //   window.open("data:text/json;charset=utf-8," + escape(json))
-        // });
+
     </script>
 </body>
 
