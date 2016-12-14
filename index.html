@@ -26,7 +26,11 @@
                 </tr>
                 <tbody></tbody>
                 </table>
-                <p class="bodyText"><strong>2.</strong> Fill in the CSV with all relevant information. Leave irrelevant fields empty. Paste photo links directly into the <span class="cell">Image</span> column. Hyperlinks <strong>MUST</strong> be inserted as inline <span class="code">&lt;a&gt;</span> tags and formatted like <span class="code">&lta target='_blank' href='<em>URL</em>'&gt;&lt/a&gt;</span>.</p>
+                <p class="bodyText"><strong>2.</strong> Fill in the CSV with all relevant information. Leave irrelevant fields empty. Paste photo links directly into the <span class="cell">Image</span> column. Hyperlinks <strong>MUST</strong> be inserted as inline <span class="code">&lt;a&gt;</span> tags and formatted like <span class="code">&lta target='_blank' href='<em>URL</em>'&gt;&lt/a&gt;</span></p>
+                <p class="bodyText">You can use the tool below to convert URLs to <span class="code">&lt;a&gt;</span> tags.<br>
+                  Text to add hyperlink: <input type="text" value="" id="textLink"><br>
+                  URL: <input type="text" value="" id="url"> <input type="submit" id="urlSubmit" value="Convert"><br><textarea id="urlConvert"></textarea>
+                </p>
                 <!-- <input type="file" id="fileUpload" />
     <input type="button" id="upload" value="Upload" />
     <hr />
@@ -36,7 +40,7 @@
 
 
     <div id="drop_zone">Drop files here</div> -->
-                <p class="bodyText"><strong>3.</strong> Once finished, select all (CTRL+A) and copy (CTRL+C) the CSV contents and paste data in the field below.</p> <textarea id="csv" class="text"></textarea>
+                <p class="bodyText"><strong>3.</strong> Once finished, select all (CTRL+A) and copy (CTRL+C) the CSV contents and paste data in the field below.</p><textarea id="csv" class="text"></textarea>
                 <p class="bodyText"><strong>4.</strong> Click the button below to convert your CSV into the needed code.</p>
                 <!-- <form>
       <label for="cbox2"><strong>Delimiter:</strong> </label>
@@ -195,7 +199,7 @@
             font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
         }
 
-        .text {
+        .text, #urlConvert{
             width: 99%;
             background-color: #EFF0F1;
             font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
@@ -205,6 +209,12 @@
             outline: 0;
             padding: 5px;
         }
+
+        #urlConvert, #url, #textLink {
+          margin-top: 10px;
+        }
+
+        #urlConvert {display: none;}
 
         .small {
             font-size: small;
@@ -293,6 +303,16 @@
                     alert("Please upload a valid CSV file.");
                 }
             });
+        });
+
+
+        $("#urlSubmit").click(function() {
+          $("#urlConvert").html("");
+          $("#urlConvert").show();
+          var textLink = $("#textLink").val(),
+              url = $("#url").val();
+          $("#urlConvert").prepend("&lt;a target='_blank' href='"+url+"'&gt;"+textLink+"&lt;/a&gt;");
+          $("#url,#textLink").val("");
         });
 
         function CSVToArray(strData, strDelimiter) {

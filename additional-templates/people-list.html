@@ -1,0 +1,188 @@
+<script alignment="true" src="http://www.philly.com/includes/e32121b31e345f561b84372c2bf06282/jquery-2.0.0b2.js" type="text/javascript"></script>
+
+
+<div id='listContainer' alignment='true'></div><script alignment='true'>
+
+
+
+var data ={'women': [
+  {
+    "Name": "Victim 1",
+    "Age": "",
+    "State": "",
+    "Text": "She was in her 20s and worked at the Playboy Club in New York, where she met Cosby in the early 1970s. She says he offered her Quaaludes in a limousine one day, but she turned him down. She alleges Cosby gave her four glasses of champagne, which she believes were drugged. She says she woke up naked and sore in a hotel room.",
+    "Image": "http://media.philly.com/images/Female_silhouette.png"
+  },
+  {
+    "Name": "Heidi Thomas",
+    "Age": "Age: 56",
+    "State": "State: Colorado",
+    "Text": "An aspiring actress in 1984, she met Cosby at a hotel in Reno, Nev., at the urging of her agent. Cosby allegedly gave her a drink so she could play a drunk person in a scene he asked her to prepare for their acting lesson. She says that she fell in and out of consciousness and that Cosby forced her to perform oral sex.",
+    "Image": "http://media.philly.com/images/heidiThomas.jpg"
+  },
+  {
+    "Name": "Janice Baker Kenney",
+    "Age": "Age: 58",
+    "State": "State: California",
+    "Text": "She met Cosby in 1982 while working as a bartender in Reno. She alleges Cosby gave her pills while they played backgammon at a house party. She says she remembers seeing her blouse unbuttoned and Cosby’s pants unzipped before waking up later with signs of sexual assault.",
+    "Image": "http://media.philly.com/images/janiceBaker.jpg"
+  },
+  {
+    "Name": "Therese Serignese",
+    "Age": "",
+    "State": "State: Florida",
+    "Text": "She was 19 when she met Cosby in the gift shop of a Las Vegas hotel in 1975. She says Cosby invited her backstage after a show, gave her two pills, and raped her. Cosby, in a 2005 deposition, said he gave Serignese Quaaludes before a consensual sexual encounter.",
+    "Image": "http://media.philly.com/images/thereseSerignese.jpg"
+  },
+  {
+    "Name": "Linda Kirkpatrick",
+    "Age": "",
+    "State": "",
+    "Text": "She played in a tennis tournament against Cosby in 1981 and says he invited her to his show in Las Vegas. After he gave her champagne in the dressing room, she says, she became incapacitated and he sexually assaulted her.",
+    "Image": ""
+  },
+  {
+    "Name": "Kasey",
+    "Age": "Age: 49",
+    "State": "State:",
+    "Text": "She worked for one of Cosby’s agents and had known the comedian for six years when he invited her to lunch in his hotel room in 1996 to discuss her ambitions as an actress. She says he offered her wine and a pill, which she took, before she says Cosby sexually assaulted her.",
+    "Image": "http://media.philly.com/images/Female_silhouette.png"
+  },
+  {
+    "Name": "Margie Shapiro",
+    "Age": "Age: 60",
+    "State": "State:",
+    "Text": "Cosby dropped in at the Santa Monica, Calif., doughnut shop where she worked in 1975. He invited her to a show taping and a dinner party but took her to a house instead, where she says he challenged her to a pinball game and bet her that the loser would have to take a pill. She alleges she woke up later to find Cosby on top of her.",
+    "Image": "http://media.philly.com/images/margieShapiro.jpg"
+  },
+  {
+    "Name": "Victim 2",
+    "Age": "Age: 73",
+    "State": "State:",
+    "Text": "She was a flight attendant in 1964 when Cosby invited her to a taping of his television show and cast her as an extra. After a friendship of several months, she says, he offered her champagne in a Chicago hotel room one night. She says she passed out and awoke naked and sore the next morning in his bed.",
+    "Image": "http://media.philly.com/images/Female_silhouette.png"
+  },
+  {
+    "Name": "Lise Lotte-Lublin",
+    "Age": "Age: 50",
+    "State": "State: Nevada",
+    "Text": "An aspiring actress, she was invited by Cosby to his suite at the Las Vegas Hilton in 1989 to practice acting improvisation, she says. She says he encouraged her to have two drinks to relax and she woke up at home two days later. She believes she was sexually assaulted.",
+    "Image": "http://media.philly.com/images/liseLotteLublin.jpg"
+  },
+  {
+    "Name": "Donna Motsinger",
+    "Age": "Age: 73",
+    "State": "State: New Mexico",
+    "Text": "A waitress at one of Cosby’s favorite restaurants in Sausalito, Calif., she says Cosby invited her to a show in 1972 and gave her wine and a pill in the limousine on the way there. She alleges he fondled her and she awoke nearly naked the next day back at her own home.",
+    "Image": "http://media.philly.com/images/Female_silhouette.png"
+  },
+  {
+    "Name": "Rebecca Neal",
+    "Age": "Age: 61",
+    "State": "State:",
+    "Text": "A masseuse at a Las Vegas health club where Cosby was a member, she accepted an invitation from him to attend a show and dinner afterward in the mid-í80s. She says that he urged her to have a drink and that he raped her in his hotel room while she was too disoriented to consent.",
+    "Image": "http://media.philly.com/images/rebeccaNeal.jpg"
+  },
+  {
+    "Name": "Linda Brown",
+    "Age": "Age: 68",
+    "State": "State:",
+    "Text": "She attended one of Cosby’s shows in Toronto in 1969 at the urging of her modeling agent. She says she followed him up to his room afterward at his invitation and accepted a soda can he gave her. She alleges that she later blacked out and that Cosby raped her.",
+    "Image": "http://media.philly.com/images/lindaBrown.jpg"
+  },
+  {
+    "Name": "Cindra Ladd",
+    "Age": "Age: 68",
+    "State": "State: California",
+    "Text": "She met Cosby while working as a model in New York City in 1969. She says she complained of a headache while at a friend’s house with the comedian one day, when he offered her a pill he called a miracle cure.î She alleges Cosby raped her when she became incapacitated.",
+    "Image": "http://media.philly.com/images/Female_silhouette.png"
+  }
+]
+};
+      var output="<div>";
+      for (var i in data.women) {
+          output+="<div class='cardContainer'><div class='innerContainer'><img src='"+data.women[i].Image+"'/><div class='name'>"+data.women[i].Name+"</div><div class='age'>"+data.women[i].Age+"</div><div class='location'>"+data.women[i].State+"</div><div class='text'>"+data.women[i].Text+"</div></div></div>";
+      }
+
+      output+="</div>";
+      document.getElementById("listContainer").innerHTML=output;
+
+      //if($(window).width() >= 700){
+      // $('.cardContainer img').css({
+      //   width: '175px',
+      //   float: 'right',
+      //   margin: '0 0 5% 5%',
+      // })
+      // $('.age').css({
+      //     fontSize: '16px',
+      // })
+      //} if($(window).width() <= 700){
+      // $('.cardContainer img').css({
+      //   width: '100%',
+      //   float: 'none',
+      //   margin: '0 0 5%',
+      // })
+      // $('.age').css({
+      //     fontSize: '45px',
+      // })
+      //}
+      if ($(window).width() <= 500){
+        $('.cardContainer img').css({
+          width: '100%',
+          float: 'none',
+          margin: '0 0 5%',
+        })
+      } else {
+        $('.cardContainer img').css({
+          width: '150px',
+          float: 'left',
+          margin: '0% 5% 0 0',
+        })
+      }
+
+      $('.cardContainer').css({
+          maxWidth: '100%',
+          width: '100%',
+          marginTop: '0',
+          marginRight: 'auto',
+          marginBottom: '0',
+          marginLeft: 'auto',
+          borderBottomWidth: '0.5px',
+          borderBottomStyle: 'dotted',
+          borderBttomColor: 'black',
+          fontFamily: '"Sentinel SSm A", "Sentinel SSm B", Times, "Times New Roman", serif',
+          marginBottom: '1.25rem',
+          fontSize: '1.1rem',
+          lineHeight: '1.5'
+      })
+      // $('.cardContainer img').css({
+      //     boxShadow: '2px 2px 10px 2px #ccc',
+      // })
+      $('.age, .location').css({
+          fontSize: '14px',
+          fontFamily: '"Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif',
+          color: '#777',
+      })
+
+
+
+      $('.innerContainer').css({
+          padding: '5% 5% 10%',
+      })
+      $('.name, .author, .publisher').css({
+          fontFamily: '"Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif',
+      })
+      $('.author, .publisher').css({
+          lineHeight: '3',
+          color: '#999',
+      })
+      $('.name').css({
+          fontSize: '20px',
+          fontWeight: '700',
+      })
+
+      $('.publisher').css({
+          fontSize: '14px',
+          fontStyle: 'italic',
+      })
+    </script>
