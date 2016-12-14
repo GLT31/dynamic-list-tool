@@ -51,7 +51,7 @@
                     <span
                         class="code">&lt;a&gt;</span> tags and formatted like <span class="code">&lta target='_blank' href='<em>URL</em>'&gt;&lt/a&gt;</span></p>
                 <p class="bodyText">You can use the tool below to convert URLs to <span class="code">&lt;a&gt;</span> tags.<br> <strong>&#9672; Hyperlinked text: <input type="text" value="" id="textLink"> URL:</strong> <input type="text" value="" id="url"> <input type="submit" id="urlSubmit"
-                        value="Convert"><br><textarea id="urlConvert"></textarea> </p>
+                        value="Convert"><br><div id="urlConvertContainer"></div> </p>
                 <!-- <input type="file" id="fileUpload" />
     <input type="button" id="upload" value="Upload" />
     <hr />
@@ -229,6 +229,11 @@
 
 
     <style>
+
+      body {
+        padding: 1% 2% 0%;
+      }
+
         .step:not(#step-1) {
             display: none;
         }
@@ -270,7 +275,7 @@
         }
 
         .text,
-        #urlConvert {
+        .urlConvert {
             width: 99%;
             background-color: #EFF0F1;
             font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
@@ -287,8 +292,7 @@
             margin-top: 10px;
         }
 
-        #urlConvert {
-            display: none;
+        .urlConvert {
             height: 15px;
         }
 
@@ -396,11 +400,11 @@
         //     });
         // });
         $("#urlSubmit").click(function() {
-            $("#urlConvert").html("");
-            $("#urlConvert").show();
+            //$("#urlConvert").html("");
+            $("#urlConvertContainer").show();
             var textLink = $("#textLink").val(),
                 url = $("#url").val();
-            $("#urlConvert").prepend("&lt;a target='_blank' href='" + url + "'&gt;" + textLink + "&lt;/a&gt;");
+            $("#urlConvertContainer").prepend("<textarea class='urlConvert'>&lt;a target='_blank' href='" + url + "'&gt;" + textLink + "&lt;/a&gt;</textarea>");
             $("#url,#textLink").val("");
         });
 
