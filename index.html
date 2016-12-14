@@ -7,7 +7,8 @@
 </head>
 
 <body>
-        <p id="heading">PMN: Dynamic List Tool Ver. 1.1</p>
+  <div id="wrapper">
+        <p id="heading">PMN: Dynamic List Tool Ver. 1.2</p>
         <p class="bodyText" style="margin-top: -15px;">Use this tool to create dynamically built, stylized lists.<br /><em>For help or to report bugs, contact <a href="mailto:jwhalen@philly.com?Subject=List%20Tool" target="_top">Jared Whalen</a>.</em>
             <hr />
             <div class="step" id="step-1">
@@ -232,8 +233,10 @@
 
     <style>
 
-      body {
-        padding: 1% 5% 0%;
+      #wrapper {
+        max-width: 700px;
+        width: 100%;
+        margin:0 auto;
       }
 
         .step:not(#step-1) {
@@ -533,6 +536,7 @@
         });
 
     </script>
+  </div>
 </body>
 
 </html>
